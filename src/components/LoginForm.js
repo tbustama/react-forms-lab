@@ -4,7 +4,10 @@ class LoginForm extends React.Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      username: "",
+      password: "",
+    };
   }
 
   handleChange = (e) => {
@@ -18,7 +21,8 @@ class LoginForm extends React.Component {
     return (
       <form
         onSubmit={(e) => {
-          e.target.username.value !== "" && e.target.password !== ""
+          e.preventDefault();
+          this.state.username !== "" && this.state.password !== ""
             ? this.props.handleLogin(e, this.state)
             : console.log("nope");
         }}
